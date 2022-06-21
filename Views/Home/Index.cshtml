@@ -1,0 +1,25 @@
+﻿@model List<GridExample.Models.Student>
+@using GridMvc.Html
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div class="row">
+    <div class="col-md-9">
+
+        @Html.Grid(Model).Named("StudentGrid").Columns(c =>
+   {
+
+       c.Add(x => x.Id).Titled("Student Id").Filterable(true).Sortable(true);
+       c.Add(x => x.Name).Titled("Student Name").Filterable(true).Sortable(true);
+       c.Add(x => x.Age).Titled("Student Age");
+
+   }).WithPaging(5).EmptyText("No data found")
+
+    </div>
+</div>
+
